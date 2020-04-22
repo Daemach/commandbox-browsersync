@@ -41,12 +41,12 @@ component {
         }
 
         if (!directoryExists(resolvepath("./node_modules/browser-sync" )) || !directoryExists(resolvepath("./node_modules/gulp" ))){
-            outPath = "#this.basePath#/package.json";
-            file action="write" file="#outPath#" mode="777" output="#fileRead( '/commandbox-browsersync/package.json' )#";
+            // outPath = "#this.basePath#/package.json";
+            // file action="write" file="#outPath#" mode="777" output="#fileRead( '/commandbox-browsersync/package.json' )#";
 
             if (confirm( "We need to install the local libraries - do you want me to do that for you? (y/n)" ) ) {
                 print.greenline( "Installing local libraries " );
-                command( "!npm" ).params( "install").run();
+                command( "!npm" ).params( "install", "gulp", "browser-sync", "--save-dev").run();
             } else {
                 print.cyanline("Please run 'npm install");
                 return
@@ -68,7 +68,7 @@ component {
             }
         }
 
-        var serverPort = deserializeJSON(fileRead( resolvepath("./server.json" ))).web.http.port;
+        var serverPort = trim(command( 'server info property="port"' ).run( returnOutput=true ));
 
         var gulpfile = fileRead( "/commandbox-browsersync/templates/gulpfile.js" );
 
