@@ -1,0 +1,28 @@
+{
+  "name": "commandbox-browsersync",
+  "version": "1.0.0",
+  "description": "A tool to link browsersync to a commandbox server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daemach/commandbox-browsersync.git"
+  },
+  "keywords": [
+    "commandbox",
+    "ortus",
+    "browsersync"
+  ],
+  "author": "Daemach",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daemach/commandbox-browsersync/issues"
+  },
+  "homepage": "https://github.com/Daemach/commandbox-browsersync#readme",
+  "dependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2"
+  }
+}
