@@ -29,9 +29,10 @@ If the dependencies don't exist we'll attempt to install them for you.
 ```
 /config/router.cfc
 =============
-    route("/healthcheck",function(event,rc,prc){
-        return "Ok!"; 
-    });
+
+route("/healthcheck",function(event,rc,prc){
+    return "Ok!"; 
+});
 ```
 
 The tool can launch your server if it's not already running and will create a proxy at port 3000 (default) with nodejs browsersync.  Any changes to files in your layouts, views, handlers or models folders will cause the browser to reload.
