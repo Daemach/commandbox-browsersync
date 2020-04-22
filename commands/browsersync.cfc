@@ -57,7 +57,7 @@ component {
 
         if (!serverRunning()){
             if (confirm( "We need to start the webserver - do you want me to do that for you? (y/n)" )){
-                command( "server start" ).run();
+                command( "server start openbrowser=false" ).run();
                 while (!serverRunning()){
                     print.text(".");
                     sleep(1000);
