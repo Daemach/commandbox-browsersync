@@ -54,5 +54,5 @@
         "watchPaths":"**.cfc"
     },
     "type":"commandbox-modules",
-    "version":"1.2.2"
+    "version":"1.3.0"
 }
