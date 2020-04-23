@@ -2,11 +2,12 @@ component {
 
     property name="serverService" inject="ServerService";
 
-    function run(   number  proxyport = 3000,
+    function run(   number  proxyport,
                     boolean fwreinit = true
                 ){
 
         this.basePath = resolvePath( "./");
+        var outpath = "";
         
         if (!reMatch("v\d+",command( "!node -v || echo notinstalled" ).run( returnOutput=true )).len()){
             print.redline("nodejs must be installed for browsersync to work.  Sorry!");
@@ -65,14 +66,15 @@ component {
         }
 
         if (!serverRunning()){
-            if (confirm( "We need to start the webserver - do you want me to do that for you? (y/n)" )){
+            if (confirm( "We need to start the commandbox server - do you want me to do that for you? (y/n)" )){
                 command( "server start openbrowser=false" ).run();
                 var tick = 0;
                 while (!serverRunning() && tick < 15){
                     sleep(1000);
                     tick++;
                 }
-                sleep(2000);
+                // server running doesn't mean it's actually able to serve pages...
+                sleep(5000);
             } else {
                 print.redline( "OK :(  Please start the server and then rerun browsersync." );
                 return;
@@ -94,6 +96,22 @@ component {
         var gulpfile = fileRead( "/commandbox-browsersync/templates/gulpfile.js" );
 
         var outPath = "#this.basePath#gulpfile.js";
+
+        if (isNull(arguments.proxyPort)){
+            if (serverService.isPortAvailable( serverHost, serverPort + 1 )){
+                arguments.proxyPort = serverPort + 1;
+            } else {
+                arguments.proxyPort = serverService.getRandomPort( serverHost );
+            }
+        }
+
+        // Browsersync UI is on 3001.  To avoid conflicts, we'll look for another random port.
+        while (arguments.proxyPort == 3001){
+            print.redline("Browsersync UI is on port 3001 so we need to find another proxy port...");
+            arguments.proxyPort = serverService.getRandomPort( serverHost );
+        }
+
+        print.greenline("Proxy port is: #arguments.proxyPort#");
 
         var outFile = replaceNoCase( gulpfile, "|serverHost|", ((serverHost == "0.0.0.0") ? "127.0.0.1" : serverHost), "all" );
         outfile = replaceNoCase( outfile, "|serverPort|", serverPort, "all" );
