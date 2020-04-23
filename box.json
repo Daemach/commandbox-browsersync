@@ -1,13 +1,13 @@
 {
     "author":"Daemach",
     "bugs":"",
-    "changelog":"",
+    "changelog":"https://github.com/Daemach/commandbox-browsersync/blob/master/CHANGELOG.md",
     "contributors":[],
     "dependencies":{},
     "description":"",
     "devDependencies":{},
-    "documentation":"",
-    "homepage":"",
+    "documentation":"https://github.com/Daemach/commandbox-browsersync/blob/master/README.md",
+    "homepage":"https://github.com/Daemach/commandbox-browsersync",
     "ignore":[
         "**/.*",
         "/test/",
@@ -27,8 +27,8 @@
     "private":false,
     "projectURL":"",
     "repository":{
-        "type":"",
-        "URL":""
+        "type":"git",
+        "URL":"https://github.com/Daemach/commandbox-browsersync"
     },
     "scripts":{},
     "shortDescription":"Automatic reload on file changes via nodejs browsersync",
