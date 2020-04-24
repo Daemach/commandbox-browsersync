@@ -1,4 +1,8 @@
-# commandbox-browsersync changes
+# commandbox-browsersync change
+
+### 1.3.2
+
+* fixed watch folders/framework reinit bug
 
 ### 1.3.0
 

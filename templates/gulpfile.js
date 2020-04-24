@@ -3,7 +3,7 @@ const axios = require("axios");
 const bs = require('browser-sync').create(); 
 const { reload } = bs;
 
-const url = "http://|serverHost|:|serverPort|/healthcheck/fwreinit/1";
+const url = "http://|serverHost|:|serverPort|/healthcheck?fwreinit=1";
 
 |paths|
 
@@ -12,12 +12,13 @@ gulp.task('watch', () => {
         reload();
         done();
     });
-    gulp.watch(paths.reinit, () => {
+    gulp.watch(paths.reinit, (done) => {
         console.log("Reinitializing coldbox framework");
         axios.get(url)
         .then(response => {
             console.log(response.data.trim());
             reload();
+            done();
         })
         .catch(error => {
             console.log("Error:  Please ensure you have a /healthcheck route set up in /config/router.cfc!");
