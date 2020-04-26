@@ -26,7 +26,7 @@ If the npm dependencies don't exist we'll attempt to install them for you.
 
 * The npm installs will likely fail if your site is in a dropbox folder or has anything else running that may lock files.  If npm fails, shut down any program that is using the site folder while the installs are going on.  This part of the process only happens once.
 * If you're on Windows, you should also not run the npm installs "as administrator" unless you're logged in as administrator.  The global packages are saved under a user account and will not be available unless you're running everything under that account.
-* If you want us to reinit the framework automatically on core file changes (models, handlers, config, interceptors) you must have a "/healthcheck" route or handler set up.  **If this is not set up browsersync will fail** (until I figure out a better way to handle that).  This route is set up by default in /config/router.cfc when using coldbox create app.
+* If you want us to reinit the framework automatically on core file changes (models, handlers, config, interceptors) you must have a "/healthcheck" route or handler set up.  This route is set up by default in /config/router.cfc when using coldbox create app.
 
 ```
 /config/router.cfc

@@ -22,6 +22,7 @@ gulp.task('watch', () => {
         .catch(error => {
             console.log("Error:  Please ensure you have a /healthcheck route set up in /config/router.cfc!");
             console.log("Error:  Once you've done that, please shut down commandbox then try browsersync again.");
+            console.log("Error:  More info at https://github.com/Daemach/commandbox-browsersync/blob/master/README.md");
         });
 
         done();

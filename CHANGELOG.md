@@ -1,5 +1,9 @@
 # commandbox-browsersync change
 
+### 1.3.3
+
+* fixed hang on no healthcheck route bug
+
 ### 1.3.2
 
 * fixed watch folders/framework reinit bug
